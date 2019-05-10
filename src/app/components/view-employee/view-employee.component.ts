@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { Employee } from 'src/app/Employee.model';
 
 @Component({
   selector: 'app-view-employee',
@@ -7,7 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewEmployeeComponent implements OnInit {
 
-  constructor() { }
+  employees: Observable<Employee>
+
+  constructor(private store: Store) {
+    this.employees = this.store.select(state => state.employees.employees);
+    this.employees.forEach(data => console.log(data));
+  }
 
   ngOnInit() {
   }

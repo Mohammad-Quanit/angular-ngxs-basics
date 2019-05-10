@@ -1,3 +1,81 @@
-<p>
-  add-employee works!
-</p>
+<div class="container">
+  <h3>New Employee</h3>
+  <br />
+  <div class="container-fluid">
+    <form [formGroup]='employeeForm' (ngSubmit)="submitData()">
+      <div class="form-group">
+        <label>
+          Employee Name:
+          <input class="form-control" name="name" id="name" type="text" formControlName="name" />
+        </label>
+        <div
+          *ngIf="employeeForm.controls['name'].invalid && (employeeForm.controls['name'].dirty || employeeForm.controls['name'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="employeeForm.controls['name'].errors.required">
+            Name is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+          Employee Age:
+          <input class="form-control" name="age" id="age" type="number" formControlName="age" />
+        </label>
+        <div
+          *ngIf="employeeForm.controls['age'].invalid && (employeeForm.controls['age'].dirty || employeeForm.controls['age'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="employeeForm.controls['age'].errors.required">
+            Age is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+          Employee Address:
+          <textarea rows="4" class="form-control" name="address" id="address" formControlName="address"></textarea>
+        </label>
+        <div
+          *ngIf="employeeForm.controls['address'].invalid && (employeeForm.controls['address'].dirty || employeeForm.controls['address'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="employeeForm.controls['address'].errors.required">
+            Address is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+          Employee Cnic:
+          <input class="form-control" name="cnic" id="cnic" type="text" formControlName="cnic" />
+        </label>
+        <div
+          *ngIf="employeeForm.controls['cnic'].invalid && (employeeForm.controls['cnic'].dirty || employeeForm.controls['cnic'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="employeeForm.controls['cnic'].errors.required">
+            CNIC is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+          Employee Department:
+          <input class="form-control" name="department" id="department" type="text" formControlName="department" />
+        </label>
+        <div
+          *ngIf="employeeForm.controls['department'].invalid && (employeeForm.controls['department'].dirty || employeeForm.controls['department'].touched)"
+          class="alert alert-danger">
+          <div *ngIf="employeeForm.controls['department'].errors.required">
+            Department is required.
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label>
+          Employee Vehicle:
+          <input class="" name="hasOwnVehicle" id="hasOwnVehicle" type="checkbox" [checked]="hasVehicle"
+            (change)="hasVehicleChange()" formControlName="hasOwnVehicle" />
+        </label>
+      </div>
+      <button type="submit" class="btn btn-primary" [disabled]="!employeeForm.valid">Submit</button>
+    </form>
+  </div>
+</div>

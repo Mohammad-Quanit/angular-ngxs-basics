@@ -1,3 +1,27 @@
-<p>
-  view-employee works!
-</p>
+<div *ngIf="employees">
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Address</th>
+        <th>CNIC</th>
+        <th>Department</th>
+        <th>Vehicle</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let employee of employees | async">
+        <td>{{ employee.name }}</td>
+        <td>{{ employee.age }}</td>
+        <td>{{ employee.address }}</td>
+        <td>{{ employee.cnic }}</td>
+        <td>{{ employee.department }}</td>
+        <td *ngIf="employee.hasOwnVehicle; else elseTemplate">Yes</td>
+        <ng-template #elseTemplate>
+          No
+        </ng-template>
+      </tr>
+    </tbody>
+  </table>
+</div>
